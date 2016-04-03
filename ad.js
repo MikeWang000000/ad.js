@@ -40,6 +40,8 @@ if( d(h, "ad.api.3g.tudou.com") ){  return BLACK_HOLE; }
 if( d(h, "2mdn.net" ) || d(h, "admob.com" ) || d(h, "doubleclick.com" ) || d(h, "doubleclick.net" ) || d(h, "googleadsserving.cn" ) || d(h, "googlecommerce.com" ) || d(h, "googletagmanager.com" ) || d(h, "ads.google.com" ) || d(h, "afd.l.google.com" ) || d(h, "pagead-tpc.l.google.com" ) || d(h, "pagead.google.com" ) || d(h, "pagead.l.google.com" ) || d(h, "partnerad.l.google.com" ) ){ return BLACK_HOLE;}
 //baidu
 if( d(h, "hm.baidu.com" ) || d(h, "eiv.baidu.com" ) || d(h, "pos.baidu.com" ) || d(h, "cpro.baidu.com" ) || d(h, "cpro.baidustatic.com" ) || d(h, "dup.baidustatic.com" ) ){ return BLACK_HOLE;}
+//taobao
+if( d(h, "tanx.com") ){  return BLACK_HOLE; }
 
     return DIRECT;
 }
