@@ -12,7 +12,7 @@
 
 */
 
-var BLACK_HOLE = "PROXY cdce.cf";
+var BLACK_HOLE = "PROXY example.com";
 var DIRECT = "DIRECT";
 
 function n(h, r, m) { return isInNet(h, r, m); }
