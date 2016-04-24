@@ -13,6 +13,7 @@
 */
 
 var BLACK_HOLE = "PROXY example.com";
+var CDN_SERVICE = "PROXY global.prod.fastly.net";
 var DIRECT = "DIRECT";
 
 function n(h, r, m) { return isInNet(h, r, m); }
@@ -24,6 +25,9 @@ function FindProxyForURL(url, host)
     var u = url.toLowerCase();
     var h = host.toLowerCase();
 
+//test
+if( d(h, "test.cdce.cf") ){ return CDN_SERVICE; }
+if( d(h, "cdce.cf") && s(u, "statuscheck") ){ return BLACK_HOLE;}
 //youku
 if( d(h, "ad.api.3g.youku.com") || d(h, "statis.api.3g.youku.com") ){ return BLACK_HOLE;}
 //sohu
@@ -42,6 +46,7 @@ if( d(h, "2mdn.net" ) || d(h, "admob.com" ) || d(h, "doubleclick.com" ) || d(h, 
 if( d(h, "hm.baidu.com" ) || d(h, "eiv.baidu.com" ) || d(h, "pos.baidu.com" ) || d(h, "cpro.baidu.com" ) || d(h, "cpro.baidustatic.com" ) || d(h, "dup.baidustatic.com" ) ){ return BLACK_HOLE;}
 //taobao
 if( d(h, "tanx.com") ){  return BLACK_HOLE; }
-
+//360
+if( d(h, "lianmeng.360.cn") ){  return BLACK_HOLE; }  
     return DIRECT;
 }
