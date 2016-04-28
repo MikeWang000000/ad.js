@@ -29,7 +29,7 @@ function FindProxyForURL(url, host)
 if( d(h, "test.cdce.cf") ){ return CDN_SERVICE; }
 if( d(h, "cdce.cf") && s(u, "statuscheck") ){ return BLACK_HOLE;}
 //youku
-if( d(h, "ad.api.3g.youku.com") || d(h, "statis.api.3g.youku.com") ){ return BLACK_HOLE;}
+if( d(h, "ad.api.3g.youku.com") || d(h, "statis.api.3g.youku.com") || d(h, "atm.youku.com") || d(h, "stat.youku.com") ){ return BLACK_HOLE;}
 //sohu
 if( d(h, "agn.aty.sohu.com") || d(h, "mmg.aty.sohu.com") ){ return BLACK_HOLE;}
 //letv
