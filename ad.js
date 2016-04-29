@@ -40,6 +40,8 @@ if( d(h, "bs.da.hunantv.com" ) || d(h, "g.cn.miaozhen.com" ) ){ return BLACK_HOL
 if( d(h, "lives.l.qq.com" ) || d(h, "vqq.admaster.com.cn") ) {return BLACK_HOLE; }
 //tudou
 if( d(h, "ad.api.3g.tudou.com") ){  return BLACK_HOLE; }
+//pptv                                                                  
+if( d(h, "de.as.pptv.com" ) || d(h, "pp2.pptv.com" ) || d(h, "stat.pptv.com" ) || d(h, "afp.pplive.com" ) ){ return BLACK_HOLE;}
 //google
 if( d(h, "2mdn.net" ) || d(h, "admob.com" ) || d(h, "doubleclick.com" ) || d(h, "doubleclick.net" ) || d(h, "googleadsserving.cn" ) || d(h, "googlecommerce.com" ) || d(h, "googletagmanager.com" ) || d(h, "ads.google.com" ) || d(h, "afd.l.google.com" ) || d(h, "pagead-tpc.l.google.com" ) || d(h, "pagead.google.com" ) || d(h, "pagead.l.google.com" ) || d(h, "partnerad.l.google.com" ) ){ return BLACK_HOLE;}
 //baidu
