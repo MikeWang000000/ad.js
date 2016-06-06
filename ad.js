@@ -13,16 +13,13 @@
 */
 
 function FindProxyForURL(url, host){
-
-    //符合以下规则的域名或IP地址将通过下面的代理服务器访问。由于example.com:80【不是代理服务器】，故符合以下规则的域名或IP地址将【无法访问】，可实现屏蔽广告效果。
-    var BLACK_HOLE = "PROXY example.com:80";
-
-    //不符合以下规则的域名或IP地址直连。
+    //【返回无效代理，阻止符合以下规则的域名或IP地址连接。】
+    var REJECT = "PROXY example.com:80";
+    //【其他域名或IP地址直连。】
     var DIRECT = "DIRECT";
-
     var hosts = [
 //=========域名Start=========
-//<ad.js - test>
+//<ad.js_test>
 "sc.cdce.cf",
 //<youku>
 "ad.api.3g.youku.com",
@@ -123,18 +120,17 @@ function FindProxyForURL(url, host){
 "101.227.14.85",
 "101.227.14.86"
 //=========IP地址End=========
-//【在分界线上面可以追加IP地址，两边加上双引号，使用逗号分隔。】
     ]
+//【在分界线上面可以追加IP地址，两边加上双引号，使用逗号分隔。】
     for (n in hosts){
         if(dnsDomainIs(host, hosts[n])){
-            return BLACK_HOLE;
+            return REJECT;
         }
     }
     for (n in ips){
         if(isInNet(host, ips[n], "225.225.225.225")){
-            return BLACK_HOLE;
+            return REJECT;
         }
     }
     return DIRECT;
 }
-
