@@ -122,6 +122,7 @@ function FindProxyForURL(url, host){
 "show.re.taobao.com",
 "pics.taobaocdn.com",
 //<360>
+"lianmeng.360.cn",
 "3600.com",
 "dev.tg.wan.360.cn",
 "f.360.cn",
