@@ -13,10 +13,23 @@
 */
 
 function FindProxyForURL(url, host){
-    //【返回无效代理，阻止符合规则的域名或IP地址连接。】
-    var REJECT = "PROXY example.com:80";
-    //【其他域名或IP地址直连。】
-    var DIRECT = "DIRECT";
+
+    /********************************************
+    *                                           *
+    *            关于 “mode = ” 的说明            *
+    *                                           *
+    *  0: 不使用代理 (仅屏蔽广告)                  *
+    *  1: 使用http代理 (请在下方设置服务器和端口)    *
+    *  2: 使用pac规则代理 (使用方法请看文件底部注释)  *
+    *                                           *
+    ********************************************/
+
+    var mode = 0;
+
+    //【以下http代理设置仅在 “mode = 1” 时有效】
+    var domain = "127.0.0.1";
+    var port = "8080";
+
     var hosts = [
 //=========域名Start=========
 //<ad.js_test>
@@ -123,8 +136,8 @@ function FindProxyForURL(url, host){
 //【在分界线上面可以追加IP地址，两边加上双引号，使用逗号分隔。】
     ]
     var rules = [
-//【iOS9以上的部分系统由于系统限制，无法享受规则功能。】
-//=========规则Start=========
+//【iOS 9.3.2 以上的系统由于系统限制，无法享受URL规则功能。】
+//=========URL规则Start=========
 "*pg.dmclock.com:8011/ec54.html*",
 "*pg.dmclock.com/ec54.html*",
 "http://x.jd.com/exsites?spread_type=*",
@@ -344,23 +357,48 @@ function FindProxyForURL(url, host){
 "*www.wyxokokok.com/pub/readpubxml*",
 "http://pomelocdn.beautyplus.com/iphone*",
 "*config.mobile.kukuplay.com:8080/MobileConfig*"
-//=========规则End=========
-//【在分界线上面可以追加规则，两边加上双引号，使用逗号分隔。】
+//=========URL规则End=========
+//【在分界线上面可以追加URL规则，两边加上双引号，使用逗号分隔。】
     ]
-    for (n in hosts){
-        if(dnsDomainIs(host, hosts[n])){
-            return REJECT;
+
+    dnsResolve("sc.cdce.cf");
+    var IS_AD = "PROXY example.com:80";
+    switch (mode){
+      case 0:
+          IS_NOT_AD = "DIRECT";
+          break;
+      case 1:
+          IS_NOT_AD = "PROXY " + domain + ":" + port;
+          break;
+      case 2:
+          IS_NOT_AD = FindUserProxyForURL(url, host);
+          break;
+    }
+    for (var n = 0; n < hosts.length; n++){
+        if (dnsDomainIs(host, hosts[n])){
+            return IS_AD;
         }
     }
-    for (n in ips){
-        if(isInNet(host, ips[n], "225.225.225.225")){
-            return REJECT;
+    for (var n = 0; n < ips.length; n++){
+        if (isInNet(host, ips[n], "225.225.225.225")){
+            return IS_AD;
         }
     }
-    for (n in rules){
-        if(shExpMatch(url, rules[n])){
-            return REJECT;
+    for (var n = 0; n < rules.length; n++){
+        if (shExpMatch(url, rules[n])){
+            return IS_AD;
         }
     }
-    return DIRECT;
+    return IS_NOT_AD;
 }
+
+/**********************************************
+*                                             *
+*            使用pac规则代理的方法               *
+*                                             *
+*  1. 设置“mode = 2”。                         *
+*  2. 打开pac文件，将里面的“FindProxyForURL”替换  *
+*     为“FindUserProxyForURL“后粘贴在下方即可。  *
+*                                             *
+**********************************************/
+
