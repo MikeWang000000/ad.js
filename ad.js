@@ -87,6 +87,7 @@ function FindProxyForURL(url, host){
 "cpro.baidu.com",
 "cpro.baidustatic.com",
 "dup.baidustatic.com",
+"cbjs.baidu.com",
 //<taobao>
 "tanx.com",
 "alimama.com",
@@ -118,7 +119,13 @@ function FindProxyForURL(url, host){
 "sstc360.com",
 "ad-brix.com",
 "leadboltads.net",
-"joyingmobi.com"
+"joyingmobi.com",
+"dm.jb51.net",
+"bdjs.jb51.net",
+"yokaunion.com",
+"adpro.cn",
+"pro.cn",
+"51vipedu.com"
 //=========域名End=========
 //【在分界线上面可以追加域名，两边加上双引号，使用逗号分隔。】
     ]
@@ -401,4 +408,3 @@ function FindProxyForURL(url, host){
 *     为“FindUserProxyForURL“后粘贴在下方即可。  *
 *                                             *
 **********************************************/
-
