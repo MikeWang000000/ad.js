@@ -369,7 +369,7 @@ function FindProxyForURL(url, host){
     ]
 
     dnsResolve("sc.cdce.cf");
-    var IS_AD = "PROXY example.com:80";
+    var IS_AD = "PROXY example.com:443";
     switch (mode){
       case 0:
           IS_NOT_AD = "DIRECT";
